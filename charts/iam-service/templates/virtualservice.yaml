@@ -1,0 +1,32 @@
+{{- if .Values.virtualService.enabled -}}
+{{- $fullName := include "iam-service.env" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ $fullName }}
+  namespace: 
+  labels:
+    {{- include "iam-service.labels" . | nindent 4 }}
+spec:
+  hosts:
+    {{- range .Values.virtualService.hosts }}
+    - {{ . | quote }}
+    {{- end }}
+  gateways:
+    {{- range .Values.virtualService.gateways }}
+    - {{ . | quote }}
+    {{- end }}
+  http:
+    - name: {{ $fullName }}
+      match:
+        - uri:
+            prefix: {{ .Values.virtualService.http.prefix }}
+      rewrite:
+        uri: "/"
+      route:
+        - destination:
+            host: {{ $fullName }}
+            port:
+              number: {{ $svcPort }}
+{{- end -}}

@@ -1,0 +1,7 @@
+{{- $namespace := include "iam-service.env" . -}}
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: {{ $namespace }}
+  labels:
+    istio-injection: enabled

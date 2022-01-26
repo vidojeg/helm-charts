@@ -1,0 +1,5 @@
+1. Get the application URL by running these commands:
+{{- if .Values.virtualService.enabled }}
+https://{{ .Values.virtualService.hosts}}/{{ .Values.virtualService.http.prefix}}
+{{- end }}
+
