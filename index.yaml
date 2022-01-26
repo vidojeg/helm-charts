@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  iam-service:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-01-26T17:37:49.354520247Z"
+    description: A Helm chart for Kubernetes
+    digest: 3a37f7ab32fd91c5e9ac3735e6a39567c1cdf97f96fb4594b7bca50882f0f03f
+    name: iam-service
+    type: application
+    urls:
+    - https://github.com/vidojeg/helm-charts/releases/download/iam-service-0.0.1/iam-service-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-01-26T17:37:49.022435197Z"
